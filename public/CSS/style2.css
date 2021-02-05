@@ -1,0 +1,51 @@
+.payment_d{
+    display: inline-block;
+}
+
+.logo_payment{
+    width: 40vh;
+    padding-top: 50px;
+}
+
+#col1{
+    float : left;
+    width: 850px;
+}
+
+  #col2{
+float : right;
+width: 400px;
+}
+
+.right_col{
+    background-color: grey;
+}
+
+/*
+  #col3 {
+    margin-left: 850px;
+	margin-right: 400px;
+    overflow: hidden;
+
+      }
+*/
+
+.table_payment{
+    padding-top: 50px;
+}
+
+.tt_line{
+      margin-left: 10px;
+}
+
+.separation{
+    height: 100vh;
+    width: 1px;  
+}
+
+.sep_1{
+    height: 1px;
+    padding: 0;
+    color:rgb(204, 204, 204);
+    background-color: rgb(204, 204, 204);
+}

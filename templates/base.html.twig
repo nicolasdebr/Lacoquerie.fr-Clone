@@ -1,0 +1,372 @@
+<head>
+	<meta charset="UTF-8">
+	<title>
+		{% block title %}Welcome!
+		{% endblock %}
+	</title>
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+	<link rel="stylesheet" href="/CSS/style.css">
+	<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+	<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.1/css/all.css" integrity="sha384-vp86vTRFVJgpjF9jiIGPEEqYqlDwgyBgEF109VFjmqGmIY/Y4HV4d3Gp2irVfcrp" crossorigin="anonymous">
+	<link rel="preconnect" href="https://fonts.gstatic.com">
+	<link href="https://fonts.googleapis.com/css2?family=Open+Sans+Condensed:wght@300&display=swap" rel="stylesheet">
+	<link href="{{ asset('CSS/star-rating.css') }}" media="all" rel="stylesheet" type="text/css"/> {% block stylesheets %}{% endblock %}
+	<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
+	<script src="{{ asset('js/star-rating.js') }}" type="text/javascript"></script>
+	<nav>
+	    <!--logo nav-->
+		<a href="{{ path('accueil') }}" class="brand-logo center"><img class="logo" 
+		src="https://cdn.shopify.com/s/files/1/0032/9223/3837/files/LOGO_2021_la_coquerie_360x.png?v=1607372246"></a>
+		<ul id="nav-mobile" class="right hide-on-med-and-down">
+    	<!--btn connexion-->
+			{% if is_granted('ROLE_USER')%}
+				<li>
+					<a href="{{ path('client') }}">
+						<p>
+							Hello {{app.user.email}}
+						</p>
+						<p></p>
+					</a>
+				</li>
+
+				<li>
+					<a href="{{ path('app_logout') }}" class="waves-effect waves-light btn ">Logout</a>
+				</li>
+			{% else %}
+				<li>
+					<a href="#modal1" class="waves-effect waves-light btn modal-trigger">Login</a>
+				</li>
+			{% endif %}
+			{# <li>
+				<a href="sass.html">
+					<i class="material-icons" id="icn">search</i>
+				</a>
+			</li> #}
+			<li>
+				<a href="{{ path('qr') }}">
+					<i class="material-icons" id="icn">help_outline</i>
+				</a>
+			</li>
+			{% if is_granted('ROLE_USER')%}
+				<li>
+					<a href="#modalFavoris" class="modal-trigger">
+						<i class="material-icons">favorite_border</i>
+					</a>
+				</li>
+				<li>
+					<a href="{{ path('panier') }}">
+						<i class="material-icons" id="icn">shopping_cart</i>
+					</a>
+				</li>
+			{% endif %}
+		</ul>
+    	<!--sidenav-->
+		<ul id="slide-out" class="sidenav">
+    	<!--btn connexion-->
+			{% if is_granted('ROLE_USER')%}
+				<li>
+					<a href="{{ path('client') }}">
+						<p>
+							Hello {{app.user.email}}
+						</p>
+						<p></p>
+					</a>
+				</li>
+
+				<li>
+					<a href="{{ path('app_logout') }}" class="waves-effect waves-light btn ">Logout</a>
+				</li>
+			{% else %}
+				<li>
+					<a href="#modal1" class="waves-effect waves-light btn modal-trigger">Login</a>
+				</li>
+			{% endif %}
+			<!--icônes en haut/droite-->
+			{# <li>
+				<a href="sass.html">
+					<i class="material-icons" id="icn">search</i>
+				</a>
+			</li> #}
+			<li>
+				<a href="{{ path('qr') }}">
+					<i class="material-icons" id="icn">help_outline</i>
+				</a>
+			</li>
+			{% if is_granted('ROLE_USER')%}
+				<li>
+					<a href="#modalFavoris" class="modal-trigger">
+						<i class="material-icons">favorite_border</i>
+					</a>
+				</li>
+				<li>
+					<a href="{{ path('panier') }}">
+						<i class="material-icons" id="icn">shopping_cart</i>
+					</a>
+				</li>
+			{% endif %}
+  </ul>
+  <a href="#" data-target="slide-out" class="sidenav-trigger"><i class="material-icons">menu</i></a><br>
+		<!--icônes bas-->
+		<div align="center">
+			<div class="dropdown-menu">
+				<a href="" class="menu-btn" id="nav_cat">
+					<i class="fas fa-palette" id="icn_nav2"></i>&nbsp;&nbsp;&nbsp;&nbsp;<FONT size="2pt">Personnaliser</FONT>&nbsp;<i id="icn2" class="fas fa-chevron-down"></i>
+				</a>
+				<div class="menu-content">
+					<a class="links-hidden" href="{{ path('collection', { id: 16 }) }}">Produits personnalisables</a>
+					<a class="links-hidden" href="{{ path('collection', { id: 17 }) }}">Coques à prénoms</a>
+				</div>
+			</div>
+			<a class="links" id="nav_cat" href="{{ path('collection', { id: 15 }) }}">
+				<i class="fas fa-gift" id="icn_nav2"></i>&nbsp;&nbsp;&nbsp;&nbsp;<FONT size="2pt">Idées Cadeaux</FONT></a>
+			<a class="links" id="nav_cat" href="{{ path('collection', { id: 14 }) }}"><FONT size="2pt">Nouvelle Co'</FONT>&nbsp;&nbsp;&nbsp;&nbsp;<i class="fab fa-neos" id="icn_nav2"></i>
+			</a>
+			<div class="dropdown-menu">
+				<a href="" class="menu-btn" id="nav_cat">
+					<i class="fas fa-shield-alt" id="icn_nav2"></i>&nbsp;&nbsp;&nbsp;&nbsp;<FONT size="2pt">Nos Coques</FONT>&nbsp;<i id="icn2" class="fas fa-chevron-down"></i>
+				</a>
+				<div class="menu-content">
+					<a class="links-hidden" href="{{ path('collection', { id: 11 }) }}">Coques 3D</a>
+					<a class="links-hidden" href="{{ path('collection', { id: 10 }) }}">Colorées</a>
+					<a class="links-hidden" href="{{ path('collection', { id: 2 }) }}">Fleurie</a>
+					<a class="links-hidden" href="{{ path('collection', { id: 4 }) }}">Food</a>
+					<a class="links-hidden" href="{{ path('collection', { id: 9 }) }}">Insolite</a>
+					<a class="links-hidden" href="{{ path('collection', { id: 8 }) }}">Japonaise</a>
+				</div>
+			</div>
+			<div class="dropdown-menu">
+				<a href="" class="menu-btn" id="nav_cat">
+					<i class="fas fa-shield-alt" id="icn_nav2"></i>&nbsp;&nbsp;&nbsp;&nbsp;<FONT size="2pt">Transparentes</FONT>&nbsp;<i id="icn2" class="fas fa-chevron-down"></i>
+				</a>
+				<div class="menu-content">
+					<a class="links-hidden" href="{{ path('collection', { id: 6 }) }}">Coques à motifs</a>
+					<a class="links-hidden" href="{{ path('collection', { id: 7 }) }}">Coques à messages</a>
+				</div>
+			</div>
+			<a class="links" id="nav_cat" href="{{ path('collection', { id: 5 }) }}">
+				<i class="fas fa-mobile" id="icn_nav2"></i>&nbsp;&nbsp;&nbsp;&nbsp;<FONT size="2pt">Grips</FONT></a>
+			<a class="links" id="nav_cat" href="{{ path('collection', { id: 12 }) }}">
+				<i class="fas fa-plus-circle" id="icn_nav2"></i>&nbsp;&nbsp;&nbsp;&nbsp;<FONT size="2pt">Accessoires</FONT></a>
+			<a class="links" id="nav_cat" href="{{ path('qr') }}">
+				<i class="far fa-comments" id="icn_nav2"></i>&nbsp;&nbsp;&nbsp;&nbsp;<FONT size="2pt">Questions/Réponses</FONT></a>
+		</div>
+	</nav>
+	<ul class="sidenav" id="mobile-demo">
+		<li>
+			<a href="sass.html">Sass</a>
+		</li>
+		<li>
+			<a href="badges.html">Components</a>
+		</li>
+		<li>
+			<a href="collapsible.html">JavaScript</a>
+		</li>
+	</ul>
+</head>
+<body>
+	<div class="container-fluid"> {% block body %}{% endblock %}
+		</div>
+		{% block javascripts %}{% endblock %}
+	</body>
+	<!--modal connexion-->
+	<div id="modal1" class="modal">
+		<div class="modal-content">
+			<?php echo form_open('home/accueil'); ?>
+			<h4>Mon compte :</h4>
+			<div class="row">
+				<form action="{{ path('login') }}" method="post">
+					<label for="email">Adresse Mail</label>
+					<input type="text" id="email" name="email" class="form-control">
+					<label for="mdp">Mot de passe</label>
+					<input type="password" id="mdp" name="password" class="form-control">
+					<input type="hidden" name="_csrf_token" value="{{ csrf_token('authenticate') }}">
+				</div>
+				<div class="col s6">
+					<a href="{{ path('app_register') }}">Pas encore inscrit?</a>
+				</div>
+				<div class="col s6">
+					<button class="btn waves-effect waves-light" type="submit" name="action">Submit
+						<i class="material-icons right">send</i>
+					</button>
+				</div>
+			</div>
+
+		</form>
+	</div>
+	<div id="modalFavoris" class="modal">
+		<div class="modal-content">
+			<h4 class="mb-15">LISTE DES FAVORIS ET COMPARAISON</h4>
+			<div class="col s8">
+				<div class="section white center-align">
+					<div class="row">
+						{% if app.user.favoris.produits is defined %}
+							{% for fav in app.user.favoris.produits %}
+								<a href="{{ path('produit', {id :fav.id }) }}">
+									<div class="col s2">
+										<div class="row">
+											<img class="responsive-img" src="{{ fav.image }}">
+										</div>
+										<div class="row">
+											<p>{{fav.libelle}}<br>{{ fav.prix}}€</p>
+											<a href="{{ path('delete_favoris_route', { id: fav.categorie.id, idUtilisateur: app.user.id, idFavoris :fav.id }) }}">Supprimer</a>
+										</div>
+									</div>
+								</a>
+							{% endfor %}
+						{% endif %}
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<!--FOOTER-->
+	<footer class="page-footer #eeeeee grey lighten-3">
+		<div class="container">
+			<div class="row">
+				<div class="col s6">
+					<h5 class="black-text text-lighten-3">RESTEZ INFORMÉ DE TOUTES NOS NOUVEAUTÉS !</h5>
+					<p class="black-text text-lighten-3">Inscrivez-vous pour vous tenir au courant des nouveaux modèles, promos du
+												          moment, et autres opérations.</p>
+				</div>
+				<div class="col s6">
+					<form class="form-inline">
+						<input type="text" id="name" name="name" required minlength="4" maxlength="25" size="40" placeholder="Votre adresse mail">
+						<a class="waves-effect waves-black btn right grey darken-4">Valider</a>
+					</form>
+				</div>
+			</div>
+			<div class="row">
+				<div class="col s3">
+					<h5 class="black-text text-lighten-3">LIENS UTILES
+					</h5>
+					<ul>
+						<li>
+							<a id="foot_hover" class="black-text text-lighten-3" href="{{ path('engagement') }}">Nos engagements</a>&nbsp;&nbsp;<i class="fas fa-leaf black-text"></i>
+						</li>
+						<li>
+							<a id="foot_hover" class="black-text text-lighten-3" href="{{ path('contact') }}">Nous contacter</a>
+						</li>
+						<li>
+							<a id="foot_hover" class="black-text text-lighten-3" href="{{ path('livraisons') }}">Livraisons</a>
+						</li>
+						<li>
+							<a id="foot_hover" class="black-text text-lighten-3" href="#!">Devenir ambassadeur</a>
+						</li>
+					</ul>
+				</div>
+				<div class="col s3">
+					<h5 class="black-text text-lighten-3">INFORMATIONS
+					</h5>
+					<ul>
+						<li><a id="foot_hover" class="black-text text-lighten-3" href="{{ path('confidentialite') }}">Confidentialité</a></li>
+						<li><a id="foot_hover" class="black-text text-lighten-3" href="{{ path('conditions') }}">Conditions de vente</a></li>
+						<li><a id="foot_hover" class="black-text text-lighten-3" href="{{ path('mentionsLgl') }}">Mentions légales</a></li>
+					</ul>
+				</div>
+				<div class="col s3">
+					<h5 class="black-text text-lighten-3">SERVICE CLIENT
+					</h5>
+					<p class="black-text text-lighten-3">Une question ? Consultez notre
+						<a class="black-text text-lighten-3" href="{{ path('qr') }}">
+							<u>HELP center</u>
+						</a>.
+												          Vous pouvez également nous contacter:
+						<br><br>
+						Service client<br></p>
+					<ul>
+						<li class="black-text text-lighten-3">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Lun-Ven: 9:00 - 19:00</li>
+						<li class="black-text text-lighten-3">
+							<i class="far fa-clock"></i>&nbsp;&nbsp;Sam: 9:00 - 19:00</li>
+						<li class="black-text text-lighten-3">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Dim: 9:00 - 18:00</li>
+					</ul>
+					<a href="#!" class="black-text text-lighten-3">
+						<i class="far fa-envelope"></i>&nbsp;&nbsp;<u>Contactez-nous</u>
+					</a>
+				</div>
+				<div class="col s3">
+					<h5 class="black-text text-lighten-3">SUIVEZ-NOUS !
+					</h5>
+					<ul>
+						<li>
+							<i class="fab fa-facebook-f black-text" id="icones">&nbsp;&nbsp;&nbsp;</i>
+							<a class="black-text text-lighten-3" href="https://www.facebook.com/LACOQUERIE/">Facebook</a>
+						</li>
+						<li>
+							<i class="fab fa-instagram black-text" id="icones"></i>&nbsp;&nbsp;<a class="black-text text-lighten-3" href="https://www.instagram.com/accounts/login/">Instagram</a>
+						</li>
+					</ul>
+				</div>
+			</div>
+		</div>
+		<hr>
+		<div class="footer-copyright grey lighten-3">
+			<div class="container">
+				<span class="black-text text-lighten-4 left">LA COQUERIE® France</span>
+				<ul id="menu" class="black-text text-lighten-4 right" href="#!">
+					<li>
+						<a href="#!">
+							<i class="fab fa-cc-paypal black-text"></i>
+						</a>
+					</li>
+					<li>
+						<a href="#!">
+							<i class="fab fa-cc-visa black-text"></i>
+						</a>
+					</li>
+					<li>
+						<a href="#!">
+							<i class="fab fa-cc-mastercard black-text"></i>
+						</a>
+					</li>
+					<li>
+						<a href="#!">
+							<i class="fab fa-cc-amex black-text"></i>
+						</a>
+					</li>
+					<li>
+						<a href="#!">
+							<i class="fas fa-shield-alt black-text"></i>
+						</a>
+					</li>
+				</ul>
+			</div>
+		</div>
+	</footer>
+	<script>
+		document.addEventListener('DOMContentLoaded', function () {
+var elems1 = document.querySelectorAll('.modal');
+var instances = M.Modal.init(elems1);
+var elems = document.querySelectorAll('.slider');
+var instances = M.Slider.init(elems);
+var el = document.getElementById('tabs')
+var instance = M.Tabs.init(el)
+
+
+});
+document.addEventListener('DOMContentLoaded', function () {
+var elems3 = document.querySelectorAll('.parallax');
+var instances = M.Parallax.init(elems3);
+});
+	</script>
+	<script>
+		document.addEventListener('DOMContentLoaded', function () {
+var elems = document.querySelectorAll('.tooltipped');
+var instances = M.Tooltip.init(elems, options);
+});
+	</script>
+	<script>
+		$(document).ready(function () {
+$('.carousel').carousel();
+});
+	</script>
+	<script>
+		$('.dropdown-trigger').dropdown();
+	</script>
+	<script>
+	$(document).ready(function(){
+    $('.sidenav').sidenav();
+  });
+  </script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+	{# <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script> #}
+</html>

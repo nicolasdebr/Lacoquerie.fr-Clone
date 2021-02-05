@@ -1,0 +1,355 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Hello AccueilController!{% endblock %}
+
+{% block body %}
+<header class="container-fluid">
+    <div class="row">
+    <img class="img_cat2"
+                            src="https://cdn.shopify.com/s/files/1/0032/9223/3837/files/BANIERE_COQUE_PERSONNALISEE_1903x.progressive.jpg?v=1608504948" />
+    </div>
+</header>
+<div id="separation" class="center m0">
+    <p>Votre coque made in France, chez vous en 3 jours! FR</p>
+</div>
+</div>
+<!-- Container du centre de la page !-->
+<div class="container">
+    <div class="slider">
+        <ul class="slides white">
+            <!-- Mettre la boucle pour les produits ici !-->
+            <li>
+                <div class="row">
+                    <div class="col s3">
+                        <div class="row">
+                        <a href="{{ path('produit', { id: collections[0].produits[0].id }) }}">
+                            <img id="img-slid2"
+                                src="{{ collections[0].produits[0].image }}"></a>
+                        </div>
+                        <div class="row">
+                            <p>{{ collections[0].produits[0].libelle }}<p>
+                                    <p>{{ collections[0].produits[0].prix }} <i class="fas fa-star green-text"></i>
+                        </div>
+                    </div>
+                    <div class="col s3">
+                        <div class="row">
+                        <a href="{{ path('produit', { id: collections[1].produits[0].id }) }}">
+                            <img id="img-slid2"
+                                src="{{ collections[1].produits[0].image }}"></a>
+                        </div>
+                        <div class="row">
+                            <p>{{ collections[1].produits[0].libelle }}<p>
+                                    <p>{{ collections[1].produits[0].prix }} <i class="fas fa-star green-text"></i>
+                                        <i class="fas fa-star green-text"></i>
+                                        <i class="fas fa-star green-text"></i>
+                                        <i class="fas fa-star green-text"></i>
+                                        <i class="fas fa-star green-text"></i>&nbsp;&nbsp;50 avis<p>
+                        </div>
+                    </div>
+                    <div class="col s3">
+                        <div class="row">
+                        <a href="{{ path('produit', { id: collections[2].produits[0].id }) }}">
+                            <img id="img-slid2"
+                                src="{{ collections[2].produits[0].image }}"></a>
+                        </div>
+                        <div class="row">
+                            <p>{{ collections[2].produits[0].libelle }}<p>
+                                    <p>{{ collections[2].produits[0].prix }} <i class="fas fa-star green-text"></i>
+                                        <i class="fas fa-star green-text"></i>
+                                        <i class="fas fa-star green-text"></i>
+                                        <i class="fas fa-star green-text"></i>
+                                        <i class="fas fa-star green-text"></i>&nbsp;&nbsp;50 avis<p>
+                        </div>
+                    </div>
+                    <div class="col s3">
+                        <div class="row">
+                        <a href="{{ path('produit', { id: collections[3].produits[0].id }) }}">
+                            <img id="img-slid2"
+                                src="{{ collections[3].produits[0].image }}"></a>
+                        </div>
+                        <div class="row">
+                            <p>{{ collections[3].produits[0].libelle }}<p>
+                                    <p>{{ collections[3].produits[0].prix }} <i class="fas fa-star green-text"></i>
+                                        <i class="fas fa-star green-text"></i>
+                                        <i class="fas fa-star green-text"></i>
+                                        <i class="fas fa-star green-text"></i>
+                                        <i class="fas fa-star green-text"></i>&nbsp;&nbsp;50 avis<p>
+                        </div>
+                    </div>
+                </div>
+            </li>
+            <li>
+                <div class="row">
+                    <div class="col s3">
+                        <div class="row">
+                        <a href="{{ path('produit', { id: collections[4].produits[0].id }) }}">
+                            <img id="img-slid2"
+                                src="{{ collections[4].produits[0].image }}"></a>
+                        </div>
+                        <div class="row">
+                            <p>{{ collections[4].produits[0].libelle }}<p>
+                                    <p>{{ collections[4].produits[0].prix }} <i class="fas fa-star green-text"></i>
+                                        <i class="fas fa-star green-text"></i>
+                                        <i class="fas fa-star green-text"></i>
+                                        <i class="fas fa-star green-text"></i>
+                                        <i class="fas fa-star green-text"></i>&nbsp;&nbsp;50 avis<p>
+                        </div>
+                    </div>
+                    <div class="col s3">
+                        <div class="row">
+                        <a href="{{ path('produit', { id: collections[5].produits[0].id }) }}">
+                            <img id="img-slid2"
+                                src="{{ collections[5].produits[0].image }}"></a>
+                        </div>
+                        <div class="row">
+                            <p>{{ collections[5].produits[0].libelle }}<p>
+                                    <p>{{ collections[5].produits[0].prix }} <i class="fas fa-star green-text"></i>
+                                        <i class="fas fa-star green-text"></i>
+                                        <i class="fas fa-star green-text"></i>
+                                        <i class="fas fa-star green-text"></i>
+                                        <i class="fas fa-star green-text"></i>&nbsp;&nbsp;50 avis<p>
+                        </div>
+                    </div>
+                    <div class="col s3">
+                        <div class="row">
+                        <a href="{{ path('produit', { id: collections[6].produits[0].id }) }}">
+                            <img id="img-slid2"
+                                src="{{ collections[6].produits[0].image }}"></a>
+                        </div>
+                        <div class="row">
+                            <p>{{ collections[6].produits[0].libelle }}<p>
+                                    <p>{{ collections[6].produits[0].prix }} <i class="fas fa-star green-text"></i>
+                                        <i class="fas fa-star green-text"></i>
+                                        <i class="fas fa-star green-text"></i>
+                                        <i class="fas fa-star green-text"></i>
+                                        <i class="fas fa-star green-text"></i>&nbsp;&nbsp;50 avis<p>
+                        </div>
+                    </div>
+                    <div class="col s3">
+                        <div class="row">
+                        <a href="{{ path('produit', { id: collections[7].produits[0].id }) }}">
+                            <img id="img-slid2"
+                                src="{{ collections[7].produits[0].image }}"></a>
+                        </div>
+                        <div class="row">
+                            <p>{{ collections[7].produits[0].libelle }}<p>
+                                    <p>{{ collections[7].produits[0].prix }} <i class="fas fa-star green-text"></i>
+                                        <i class="fas fa-star green-text"></i>
+                                        <i class="fas fa-star green-text"></i>
+                                        <i class="fas fa-star green-text"></i>
+                                        <i class="fas fa-star green-text"></i>&nbsp;&nbsp;50 avis<p>
+                        </div>
+                    </div>
+                </div>
+            </li>
+        </ul>
+    </div>
+    <br>
+    <!-- Liste des trois catégories, ajouter l'effet on focus !-->
+    <div class="row">
+        <div class="opacity1">
+            <div class="col s4">
+                <div>
+                    <a href="{{ path('collection', { id: 16 }) }}"><img class="img_cat"
+                            src="https://cdn.shopify.com/s/files/1/0032/9223/3837/files/photo_perso_-4_407x.progressive.jpg?v=1602695093" />
+                    </a>
+                    <h5>
+                        <center>PERSONNALIS&Eacute;E</center>
+                    </h5>
+                </div>
+            </div>
+            <div class="col s4">
+                <div>
+                    <a href="{{ path('collection', { id: 15 }) }}"><img class="img_cat"
+                            src="https://cdn.shopify.com/s/files/1/0032/9223/3837/files/coque_polaroid_animaux_dca51fe6-ca98-406b-99cf-2fc5e07d06e7_407x.progressive.jpg?v=1609589753" />
+                    </a>
+                    <h5>
+                        <center>POLAROID</center>
+                    </h5>
+                </div>
+            </div>
+            <div class="col s4">
+                <div>
+                    <a href="{{ path('collection', { id: 7 }) }}"><img class="img_cat"
+                            src="https://cdn.shopify.com/s/files/1/0032/9223/3837/files/125910943_1323564814649626_4806384871818393075_n_407x.progressive.jpg?v=1609589892" />
+                    </a>
+                    <h5>
+                        <center>MESSAGES</center>
+                    </h5>
+                </div>
+            </div>
+        </div>
+    </div>
+    <hr>
+    <div class="slider">
+        <ul class="slides white">
+            <!-- Mettre la boucle pour les produits personnalisés ici !-->
+            <li>
+                <div class="row">
+                    <div class="col s3">
+                        <div class="row">
+                        <a href="{{ path('produit', { id: collections[8].produits[0].id }) }}">
+                            <img id="img-slid2"
+                                src="{{ collections[8].produits[0].image }}"></a>
+                        </div>
+                        <div class="row">
+                            <p>{{ collections[8].produits[0].libelle }}<p>
+                                    <p>{{ collections[8].produits[0].prix }} <i class="fas fa-star green-text"></i>
+                                        <i class="fas fa-star green-text"></i>
+                                        <i class="fas fa-star green-text"></i>
+                                        <i class="fas fa-star green-text"></i>
+                                        <i class="fas fa-star green-text"></i>&nbsp;&nbsp;50 avis<p>
+                        </div>
+                    </div>
+                    <div class="col s3">
+                        <div class="row">
+                        <a href="{{ path('produit', { id: collections[9].produits[0].id }) }}">
+                            <img id="img-slid2"
+                                src="{{ collections[9].produits[0].image }}"></a>
+                        </div>
+                        <div class="row">
+                            <p>{{ collections[9].produits[0].libelle }}<p>
+                                    <p>{{ collections[9].produits[0].prix }} <i class="fas fa-star green-text"></i>
+                                        <i class="fas fa-star green-text"></i>
+                                        <i class="fas fa-star green-text"></i>
+                                        <i class="fas fa-star green-text"></i>
+                                        <i class="fas fa-star green-text"></i>&nbsp;&nbsp;50 avis<p>
+                        </div>
+                    </div>
+                    <div class="col s3">
+                        <div class="row">
+                        <a href="{{ path('produit', { id: collections[10].produits[0].id }) }}">
+                            <img id="img-slid2"
+                                src="{{ collections[10].produits[0].image }}"></a>
+                        </div>
+                        <div class="row">
+                            <p>{{ collections[10].produits[0].libelle }}<p>
+                                    <p>{{ collections[10].produits[0].prix }} <i class="fas fa-star green-text"></i>
+                                        <i class="fas fa-star green-text"></i>
+                                        <i class="fas fa-star green-text"></i>
+                                        <i class="fas fa-star green-text"></i>
+                                        <i class="fas fa-star green-text"></i>&nbsp;&nbsp;50 avis<p>
+                        </div>
+                    </div>
+                    <div class="col s3">
+                        <div class="row">
+                        <a href="{{ path('produit', { id: collections[11].produits[0].id }) }}">
+                            <img id="img-slid2"
+                                src="{{ collections[11].produits[0].image }}"></a>
+                        </div>
+                        <div class="row">
+                            <p>{{ collections[11].produits[0].libelle }}<p>
+                                    <p>{{ collections[11].produits[0].prix }} <i class="fas fa-star green-text"></i>
+                                        <i class="fas fa-star green-text"></i>
+                                        <i class="fas fa-star green-text"></i>
+                                        <i class="fas fa-star green-text"></i>
+                                        <i class="fas fa-star green-text"></i>&nbsp;&nbsp;50 avis<p>
+                        </div>
+                    </div>
+                </div>
+            </li>
+            <li>
+                <div class="row">
+                    <div class="col s3">
+                        <div class="row">
+                        <a href="{{ path('produit', { id: collections[12].produits[0].id }) }}">
+                            <img id="img-slid2"
+                                src="{{ collections[12].produits[0].image }}"></a>
+                        </div>
+                        <div class="row">
+                            <p>{{ collections[12].produits[0].libelle }}<p>
+                                    <p>{{ collections[12].produits[0].prix }} <i class="fas fa-star green-text"></i>
+                                        <i class="fas fa-star green-text"></i>
+                                        <i class="fas fa-star green-text"></i>
+                                        <i class="fas fa-star green-text"></i>
+                                        <i class="fas fa-star green-text"></i>&nbsp;&nbsp;50 avis<p>
+                        </div>
+                    </div>
+                    <div class="col s3">
+                        <div class="row">
+                        <a href="{{ path('produit', { id: collections[3].produits[1].id }) }}">
+                            <img id="img-slid2"
+                                src="{{ collections[3].produits[1].image }}">
+                                </a>
+                        </div>
+                        <div class="row">
+                            <p>{{ collections[3].produits[1].libelle }}<p>
+                                    <p>{{ collections[3].produits[1].prix }} <i class="fas fa-star green-text"></i>
+                                        <i class="fas fa-star green-text"></i>
+                                        <i class="fas fa-star green-text"></i>
+                                        <i class="fas fa-star green-text"></i>
+                                        <i class="fas fa-star green-text"></i>&nbsp;&nbsp;50 avis<p>
+                        </div>
+                    </div>
+                    <div class="col s3">
+                        <div class="row">
+                        <a href="{{ path('produit', { id: collections[4].produits[1].id }) }}">
+                            <img id="img-slid2"
+                                src="{{ collections[4].produits[1].image }}"></a>
+                        </div>
+                        <div class="row">
+                            <p>{{ collections[4].produits[1].libelle }}<p>
+                                    <p>{{ collections[4].produits[1].prix }} <i class="fas fa-star green-text"></i>
+                                        <i class="fas fa-star green-text"></i>
+                                        <i class="fas fa-star green-text"></i>
+                                        <i class="fas fa-star green-text"></i>
+                                        <i class="fas fa-star green-text"></i>&nbsp;&nbsp;50 avis<p>
+                        </div>
+                    </div>
+                    <div class="col s3">
+                        <div class="row">
+                        
+                        <a href="{{ path('produit', { id: collections[14].produits[0].id }) }}">
+                            <img id="img-slid2"
+                                src="{{ collections[14].produits[0].image }}">
+                                </a>
+                        </div>
+                        <div class="row">
+                            <p>{{ collections[14].produits[0].libelle }}<p>
+                                    <p>{{ collections[14].produits[0].prix }} <i class="fas fa-star green-text"></i>
+                                        <i class="fas fa-star green-text"></i>
+                                        <i class="fas fa-star green-text"></i>
+                                        <i class="fas fa-star green-text"></i>
+                                        <i class="fas fa-star green-text"></i>&nbsp;&nbsp;50 avis<p>
+                        </div>
+                    </div>
+                </div>
+            </li>
+        </ul>
+    </div>
+</div>
+<br>
+<div class="container-fluid">
+    <div class="row" id="separation_accueil_bas">
+        <div class="container center">
+            <div class="col s4">
+                <i class="medium material-icons orange-text">local_shipping</i>
+                <p>
+                    <h5>Livraison gratuite</h5> Votre expédition est offerte à partir de 29.99€. Elle est
+                    assurée par
+                    lettre
+                    suivie.<p>
+            </div>
+            <div class="col s4">
+                <i class="medium material-icons orange-text">favorite</i>
+                <p>
+                    <h5>Produit français</h5> Une entreprise française, basée en France, pour des coques
+                    françaises.
+                    Cocorico.<p>
+            </div>
+            <div class="col s4">
+                <i class="medium material-icons orange-text">https</i>
+                <p>
+                    <h5>Paiement sécurisé</h5> Réglez votre commande en toute sécurité, grâce à la technologie
+                    SSL
+                    proposée pour
+                    l'ensemble des modes de paiement disponibles.<p>
+            </div>
+        </div>
+    </div>
+    <!--<div class="parallax-container">
+        <div class="parallax">
+        </div>
+    </div>-->
+</div>
+{% endblock %}

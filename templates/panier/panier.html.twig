@@ -1,0 +1,93 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Log in!{% endblock %}
+
+{% block body %}
+<div class="row">
+    <div class="container">
+        <div class="col s12">
+            <h5>
+                <center>Panier</center>
+            </h5>
+        </div>
+    </div>
+</div>
+<div class="row">
+    <div class="container">
+        <div class="col s9">
+                       {% if items | length ==0  %}
+                <tr>
+                <h3> Votre panier est vide </h3>
+                </tr>
+                {% else  %}
+            <table>
+                <thead>
+                    <tr>
+                        <th></th>
+                        <th>Produit</th>
+                        <th></th>
+                        <th>Prix</th>
+                        <th>Quantité</th>
+                        <th>Total</th>
+                    </tr>
+                </thead>
+
+                <tbody>
+                
+                    {% for item in items %}
+                    <tr>
+                        <td><a href="{{ path('panier_remove', {id :item.produit.id }) }}"><i class="far fa-trash-alt"></i></a></td>
+                        <td><img id="img_panier" class="responsive-img" src="{{ item.produit.image }}">
+									</div>
+                        </td>
+                        <td>
+                            <p>{{ item.produit.libelle }}</p>
+                        </td>
+                        <td>{{ item.produit.prix }}€</td>
+                        <td>
+                        <a href="{{ path('panier_remove_single', {id :item.produit.id })}}"><i class="material-icons">remove</i></a>
+                        {{ item.quantity}}
+                        <a href="{{ path('panier_add', {id :item.produit.id })}}"><i class="material-icons">add</i></a>
+                        </td>
+                        <td>{{ item.quantity * item.produit.prix}}€ </td>
+                    </tr>
+                    {% endfor %}
+                {% endif %}
+                </tbody>
+            </table>
+        </div>
+        <div class="col s3">
+            <div class="row">
+                <div class="card horizontal grey lighten-3">
+                    <div class="card-stacked">
+                        <div class="card-content">
+                            <p>
+                                <h4>
+                                    <center>TOTAL DU PANIER</center>
+                                </h4>
+                            </p>
+                            <br>
+                            <hr>
+                                <h5> <center>{{ total }}€</center></h5>
+                            <br>
+                            <hr>
+                            <p>
+                                <h5>Sous-total</h5>
+                            </p>
+                            <p><B>{{ total }}€</B></p>
+                            <p>Livraison avec suivi</p>
+                            <br>
+                            {% if items | length !=0  %}
+                            <center><a href="{{ path('commande')}}"><button class="btn waves-effect waves-light green darken-3" type="submit"
+                                name="action">Procéder au paiement
+                            </button></a></center>
+                            {% endif %}
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+{% endblock %}

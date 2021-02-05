@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <title>{% block title %}Welcome!{% endblock %}</title>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.3/css/materialize.min.css">
+    <script type="text/javascript" src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.3/js/materialize.min.js"></script>
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.1/css/all.css"
+        integrity="sha384-vp86vTRFVJgpjF9jiIGPEEqYqlDwgyBgEF109VFjmqGmIY/Y4HV4d3Gp2irVfcrp" crossorigin="anonymous">
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans+Condensed:wght@300&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../CSS/style2.css">
+
+    {% block body %}
+    <div class="container">
+        <div id="col1">
+            <div class="row">
+                <div class="payment_d col s6">
+                    <center>
+                        <img class="logo_payment"
+                            src="https://cdn.shopify.com/s/files/1/0032/9223/3837/files/TRUST_BADGES3.jpg?8258">
+                    </center>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col s6">
+                    <center><a href="">Panier&nbsp;&nbsp;<i class="fas fa-chevron-right"></i></a>
+                        <b>Informations</b>&nbsp;&nbsp;<i class="fas fa-chevron-right"></i>
+                        Livraison&nbsp;&nbsp;<i class="fas fa-chevron-right"></i>
+                        Paiement&nbsp;&nbsp;<i class="fas fa-chevron-right"></i></center>
+                </div>
+            </div>
+            <div class="row">
+                <div class="payment_d col s6">
+                    <form>
+                        <div class="row">
+                            <div class="input-field col s12">
+                                <input id="email" placeholder="Adresse e-mail" type="email" class="validate" value="{{app.user.email}}">
+                                <label for="email">Coordonnées</label>
+                            </div>
+                        </div>    
+                        <div class="row">
+                            <div class="input-field col s12">
+                                <input id="adress" type="text" placeholder="Adresse" class="validate" value="{{app.user.AdresseLibelle}}">
+                                <label for="adress"></label>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="input-field col s4">
+                                <input id="cp" type="text" placeholder="Code postal" class="validate"value="{{app.user.AdresseCp}}">
+                                <label for="cp"></label>
+                            </div>
+                            <div class="input-field col s4">
+                                <input id="city" type="text" placeholder="Ville" class="validate" value="{{app.user.Ville}}">
+                                <label for="city"></label>
+                            </div>
+                            <div class="input-field col s4">
+                                <input id="country" type="text" placeholder="Pays" class="validate" value="{{app.user.Pays}}">
+                                <label for="country"></label>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="input-field col s7">
+                                <a href="{{ path('panier')}}"><i class="fas fa-chevron-left"></i>&nbsp;&nbsp;Retour au panier</a>
+                            </div>
+                        </form>    
+                            <div class=" col s5">
+                               
+                            </div>
+                        </div>
+                    
+                    <br>
+                    <br>
+                    <hr>
+                    <p>Politique de remboursement &nbsp;&nbsp;Politique d'expédition &nbsp;&nbsp;Politique de
+                        confidentialité &nbsp;&nbsp;Conditions d'utilisation &nbsp;&nbsp;Conditions générales de vente
+                    </p>
+                </div>
+            </div>
+        </div>
+        <!--
+        <div id="col3">
+        <hr class="separation">
+        </div>
+        -->
+        <div class="right_col">
+        <div id="col2">
+            <div class="col s9">
+                <table class="table_payment">
+                    <thead>
+                        <tr>
+                            <th></th>
+                            <th></th>
+                            <th></th>
+                            <th></th>
+                            <th></th>
+                        </tr>
+                    </thead>
+
+                    <tbody>
+                        {% for item in items %}
+                        <tr>
+                            <td>
+                                <img id="image_paiement"  src="{{ item.produit.image }}"style="width:300px;">         
+                            </td>
+                            <td>
+                                {{ item.quantity}}
+                            </td>
+                            <td>
+                                <b>{{ item.produit.libelle }}</b>
+                            </td>
+                            <td>
+                                {{ item.produit.prix }}€
+                            </td>
+                        </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+                <br>
+                <hr class="sep_1">
+                <form class="col s9">
+                    <div class="row">
+                        <div class="input-field col s7">
+                            <input placeholder="Code de réduction" id="cd" type="text" class="validate">
+                            <label for="cd"></label>
+                        </div>
+                        <div class="input-field col s5">
+                            <a class="waves-effect waves-light btn grey lighten-1">Appliquer</a>
+                        </div>
+                    </div>
+                </form>
+                <br>
+                <hr class="sep_1">
+                 <div class="col s9">
+                    <div class="row">
+                        <p class="tt_line col s9">TOTAL</p>
+                        <p class="col s3"><b>{{ total }}€</b></p>
+                    </div>
+                    <div class="row">
+                     <a href="{{ path('enregistrement_commande')}}"><button class="btn waves-effect waves-light green darken-3" 
+                                >Payer
+                            </button></a>
+                    </div>
+                </div>
+            </div>
+            </div>
+        </div>
+        {% endblock %}
+
+</html>

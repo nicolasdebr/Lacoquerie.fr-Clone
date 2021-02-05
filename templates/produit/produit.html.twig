@@ -1,0 +1,234 @@
+{% extends 'base.html.twig' %}
+{% block body %}
+	<link rel="stylesheet" href="http://netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css">
+	<div class="container">
+	
+					<br>
+		<div class="row">
+			<div class="col s6 center-align">
+				<img id="imageDetail" src="{{ info.image }}">
+			</div>
+			<div class="col s6 center-align">
+
+				<div class="left-align">
+
+					<div class="green white-text" style="display: inline-block">EXPÉDIÉ EN 24H</div>
+					<h3>{{info.libelle}}</h3>
+					<p>
+						{% set sum = 0 %}
+						{% set avg = 0 %}
+						{% for star in info.commentaires %}
+							{% set sum= sum+ star.rate %}
+						{% endfor %}
+
+						{% if info.commentaires|length != 0 %}
+							{% set avg = sum/ info.commentaires|length %}
+						{% endif %}
+
+						{% if avg >= 1 and avg <2 %}
+							<i class="small material-icons green-text">star</i>
+							<i class="small material-icons green-text">star_border</i>
+							<i class="small material-icons green-text">star_border</i>
+							<i class="small material-icons green-text">star_border</i>
+							<i class="small material-icons green-text">star_border</i>
+						{% elseif avg >= 2 and avg <3 %}
+							<i class="small material-icons green-text">star</i>
+							<i class="small material-icons green-text">star</i>
+							<i class="small material-icons green-text">star_border</i>
+							<i class="small material-icons green-text">star_border</i>
+							<i class="small material-icons green-text">star_border</i>
+						{% elseif avg >= 3 and avg <4 %}
+							<i class="small material-icons green-text">star</i>
+							<i class="small material-icons green-text">star</i>
+							<i class="small material-icons green-text">star</i>
+							<i class="small material-icons green-text">star_border</i>
+							<i class="small material-icons green-text">star_border</i>
+						{% elseif avg >= 4 and avg <5 %}
+							<i class="small material-icons green-text">star</i>
+							<i class="small material-icons green-text">star</i>
+							<i class="small material-icons green-text">star</i>
+							<i class="small material-icons green-text">star</i>
+							<i class="small material-icons green-text">star_border</i>
+						{% elseif avg >= 5 %}
+							<i class="small material-icons green-text">star</i>
+							<i class="small material-icons green-text">star</i>
+							<i class="small material-icons green-text">star</i>
+							<i class="small material-icons green-text">star</i>
+							<i class="small material-icons green-text">star</i>
+						{% else %}
+							<i class="small material-icons green-text">star_border</i>
+							<i class="small material-icons green-text">star_border</i>
+							<i class="small material-icons green-text">star_border</i>
+							<i class="small material-icons green-text">star_border</i>
+							<i class="small material-icons green-text">star_border</i>
+						{% endif %}
+						{{info.commentaires|length}}
+						avis
+					</p>
+					<h3>{{info.prix}}€</h3>
+				</div>
+				<div class="center-align">
+					<hr>
+					     
+
+					<br>
+					{% if info.stock >0 and is_granted('ROLE_USER') %}
+					<a class="waves-effect waves-light btn green" style="width: 100%;" href="{{ path('panier_add', {id :info.id })}}"><i class="material-icons">shopping_basket</i> Ajouter au panier</a>
+					{% else %}
+					<a class="btn red disabled" style="width: 100%;"><i class="material-icons">clear</i> Rupture de Stock !</a>
+					{% endif %}
+					<br>
+					<br>
+					<br>
+					<img class="responsive-img" src="https://cdn.shopify.com/s/files/1/0291/5424/6740/files/SECURE_1.png?v=1588690120">
+				</div>
+			</div>
+
+		</div>
+
+		<div class="row">
+			<ul id="tabs-swipe-demo" class="tabs">
+				<li class="tab col s3">
+					<a href="#test-swipe-1">INFORMATION SUR LE PRODUIT</a>
+				</li>
+				<li class="tab col s3">
+					<a class="active" href="#test-swipe-2">LIVRAISON</a>
+				</li>
+				<li class="tab col s3">
+					<a href="#test-swipe-3">🌱 ÉCOLOGIE</a>
+				</li>
+				<li class="tab col s3">
+					<a href="#test-swipe-4">QUELLE MATIÈRE POUR MA COQUE ?</a>
+				</li>
+			</ul>
+			<div id="test-swipe-1" class="col s12">
+				{{info.description|raw}}
+			</div>
+			<div id="test-swipe-2" class="col s12">
+				Les frais de port sont offerts en ce moment sur notre site à partir de 29.99€ d'achat. La livraison est assurée par lettre suivie et vos colis est déposé directement dans votre boîte aux lettres, pas besoin d'être présent !
+				<br><br>
+				Toutes les commandes sont fabriquées, préparées et expédiées depuis notre atelier en France sous 24/48h ouvrés. Une fois votre commande envoyée par notre équipe, vous recevrez via mail/SMS un lien vous permettant de suivre l'acheminement de votre colis.
+				<br><br>
+				Votre colis arrive sous 1 à 5 jours ouvrés en moyenne, après envoi. La livraison prend jusqu'à 10 jours ouvrés pour l'étranger.
+			</div>
+			<div id="test-swipe-3" class="col s12">
+				<img class="imageDescription" src="https://cdn.shopify.com/s/files/1/0032/9223/3837/files/nos_engagements_-_l_ecoquerie.jpg?v=1603976801">
+				<br><br>
+				<p>
+					Parce que la bonne santé de notre planète nous concerne tous, La Coquerie™ s'adapte.
+																										Nous garantissons l'envoi de 90% de commandes sans emballage plastique. Alors que la majeur partie des marques de coques de téléphone emballent leurs produits dans des sachets plastiques inutiles, nous avons décidé de tout faire pour réduire leur utilisation au maximum.
+																										Cette mesure touche également nos enveloppes, qui en majeur partie se font sans plastique bulle tout en vous assurant la bonne protection de vos produits.
+				</p>
+				<br><br>
+				<p>
+					Afin de réduire le stock inutile, et par conséquent le transport inutile et nos déchets, nos coques sont fabriquées à la commande et selon votre modèle de smartphone.
+																										Aucune de nos coques n'est pré-fabriquée ni pré-imprimée avant que votre commande ne soit validée.
+																										De par le fait et comme vous le comprendrez j'en suis sûr, nous n'acceptons pas les retours sauf en cas d'erreur commise par notre équipe.
+																										C'est pour cette exacte raison que nous vous demanderons de bien vouloir vérifier votre commande et notamment votre modèle de smartphone. Également, vous pouvez nous contacter depuis le bouton tchat en bas à droite de notre site, où notre conseiller clientèle se fera un plaisir de vous aider dans l'identification de votre smartphone.
+				</p>
+			</div>
+			<div id="test-swipe-4" class="col s12">
+				<img class="imageDescription" src="https://cdn.shopify.com/s/files/1/0032/9223/3837/files/description-min.png?v=1602705565">
+			</div>
+		</div>
+		{# Si connecté alors il peut ecrire un commentaire #}
+
+		{# <form id='leave-review' method="post">
+													<div class="form-group">
+														<input class="form-control" id="rating-input" type="text" title=""/>
+													</div>
+													<div class="form-group">
+														<textarea placeholder="Ajoutez votre propre commentaire !" id="commentaire-input" rows="5" cols="70"></textarea>
+													</div>
+										  			<button type="submit" class="btn btn-default">Submit</button>
+												</form> #}
+
+
+		{# <button id="btn-rating-input" type="button" class="btn btn-primary">Toggle Disable</button> #}
+		{# <input id="rating-input" type="text" title="" value="5" disabled/> #}
+
+
+			<div class="row"> <div class="col s6">
+				{{ form(formComment) }}
+					<h2>Avis des clients</h2>
+					<ul class="collection">
+						{% for com in commentaires %}
+							<li class="collection-item avatar">
+								<i class="large material-icons circle indigo">account_circle</i>
+								<span class="title">
+									{% if com.rate == 0 %}
+										<i class="small material-icons green-text">star_border</i>
+										<i class="small material-icons green-text">star_border</i>
+										<i class="small material-icons green-text">star_border</i>
+										<i class="small material-icons green-text">star_border</i>
+										<i class="small material-icons green-text">star_border</i>
+									{% elseif com.rate == 1 %}
+										<i class="small material-icons green-text">star</i>
+										<i class="small material-icons green-text">star_border</i>
+										<i class="small material-icons green-text">star_border</i>
+										<i class="small material-icons green-text">star_border</i>
+										<i class="small material-icons green-text">star_border</i>
+									{% elseif com.rate == 2 %}
+										<i class="small material-icons green-text">star</i>
+										<i class="small material-icons green-text">star</i>
+										<i class="small material-icons green-text">star_border</i>
+										<i class="small material-icons green-text">star_border</i>
+										<i class="small material-icons green-text">star_border</i>
+									{% elseif com.rate == 3 %}
+										<i class="small material-icons green-text">star</i>
+										<i class="small material-icons green-text">star</i>
+										<i class="small material-icons green-text">star</i>
+										<i class="small material-icons green-text">star_border</i>
+										<i class="small material-icons green-text">star_border</i>
+									{% elseif com.rate == 4 %}
+										<i class="small material-icons green-text">star</i>
+										<i class="small material-icons green-text">star</i>
+										<i class="small material-icons green-text">star</i>
+										<i class="small material-icons green-text">star</i>
+										<i class="small material-icons green-text">star_border</i>
+									{% elseif com.rate == 5 %}
+										<i class="small material-icons green-text">star</i>
+										<i class="small material-icons green-text">star</i>
+										<i class="small material-icons green-text">star</i>
+										<i class="small material-icons green-text">star</i>
+										<i class="small material-icons green-text">star</i>
+									{% endif %}
+									{{ com.date|date('d/m/Y') }}</span>
+								<p>{{ com.description }}</p>
+							</li>
+						{% endfor %}
+					</ul>
+				</div>
+			</div>
+		</div>
+
+		<script>
+			jQuery(document).ready(function () {
+$('.tabs').tabs();
+// var $inp = $('#rating-input');
+var $inp = $('#commentaire_form_rate');
+$('label[for="commentaire_form_rate"]').hide();
+$('label[for="commentaire_form_description"]').hide();
+$inp.rating({
+min: 0,
+max: 5,
+step: 1,
+showClear: false,
+showCaption: false,
+filledStar: '<i class="glyphicon glyphicon-star" style="font-size: 0.73em;"></i>',
+emptyStar: '<i class="glyphicon glyphicon-star-empty" style="font-size: 0.73em;"></i>'
+});
+
+$('#btn-rating-input').on('click', function () {
+$inp.rating('refresh', {
+showClear: true,
+disabled: ! $inp.attr('disabled')
+});
+});
+$inp.on('rating.change', function () { // alert($('#rating-input').val());
+alert($('#commentaire_form_rate').val());
+});
+});
+		</script>
+		<script src="//netdna.bootstrapcdn.com/bootstrap/3.1.1/js/bootstrap.min.js"></script>
+	{% endblock %}

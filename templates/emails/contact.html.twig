@@ -1,0 +1,53 @@
+  {% extends 'base.html.twig' %}
+
+  {% block title %}Contact Form{% endblock %}
+
+  {% block body %}
+  <div class="row">
+      <div class="container">
+          <div class="col s4">
+              <br>
+              <img src="https://ucarecdn.com/537c69b3-aaa9-4349-a4fe-095b4fdb7faf/-/format/auto/-/preview/3000x3000/-/quality/lighter/"
+                  width="250" height="290">
+          </div>
+          <div class="col s8">
+              <br>
+              <p>
+                  <center>Notre équipe est disponible du lundi au dimanche, pour répondre à toutes vos questions
+                      !<br><br>
+                      Afin d'assurer une prise en charge rapide par notre service client, pensez à nous renseigner votre
+                      numéro de commande ! Il est visible sur votre mail/SMS de confirmation de commande.<br><br>
+                      Si vous désirez une réponse immédiate, pensez à consulter notre HELP CENTER.<br><br>
+                      Notez que notre service client, afin de répondre au mieux à vos demandes en 2021, est fermé le
+                      temps
+                      de cette fin de semaine.</center>
+              </p>
+          </div>
+      </div>
+      <div class="row">
+          <div class="container-fluid">
+              <div class="col s12">
+                  {{ form_start(email_form) }}
+                  {{ form_widget(email_form) }}
+                  <br>
+                  <div class="form-group row">
+                      <div class="col-sm-10">
+                          <input type="submit" value="Envoyer" class="btn btn-success" />
+                      </div>
+                  </div>
+                  {{ form_end(email_form) }}
+              </div>
+          </div>
+      </div>
+      <div class="row">
+          <div class="container">
+              <div class="col s12">
+                  <p>
+                      <center>La Coquerie<br>
+                          RUE DE L'EUROPE,<br>
+                          59000 LILLE</center>
+                  </p>
+              </div>
+          </div>
+      </div>
+      {% endblock %}

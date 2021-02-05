@@ -1,0 +1,88 @@
+{% extends 'base.html.twig' %}
+{% block body %}
+	<div class="container">
+		<div class="row">
+			<div class="col s4">
+				<h5>COLLECTIONS</h5>
+				<div class="collection">
+					{% for collection in collections %}
+						<a href="{{ path('collection', {id :collection.id }) }}" class="collection-item">{{ collection.libelle}}</a>
+					{% endfor %}
+				</div>
+			</div>
+			<div class="col s8">
+				<h3>{{ categorie.libelle }}</h3>
+				<div class="section white center-align">
+					<div class="row">
+						{% for obj in informations %}
+							<a href="{{ path('produit', {id :obj.id }) }}">
+								<div class="col s3">
+									<div class="row">
+										<img class="responsive-img" src="{{ obj.image }}">
+									</div>
+									<div class="row">
+										<p>{{obj.libelle}}<br>{{ obj.prix}}€<br>
+											{% set sum = 0 %}
+											{% set avg = 0 %}
+											{% for star in obj.commentaires %}
+												{% set sum= sum+ star.rate %}
+											{% endfor %}
+											
+											{% if obj.commentaires|length != 0 %}
+											{% set avg = sum/ obj.commentaires|length %}
+											{% endif %}
+
+											{% if avg >= 1 and avg <2 %}
+												<i class="small material-icons green-text">star</i>
+												<i class="small material-icons green-text">star_border</i>
+												<i class="small material-icons green-text">star_border</i>
+												<i class="small material-icons green-text">star_border</i>
+												<i class="small material-icons green-text">star_border</i>
+											{% elseif avg >= 2 and avg <3 %}
+												<i class="small material-icons green-text">star</i>
+												<i class="small material-icons green-text">star</i>
+												<i class="small material-icons green-text">star_border</i>
+												<i class="small material-icons green-text">star_border</i>
+												<i class="small material-icons green-text">star_border</i>
+											{% elseif avg >= 3 and avg <4 %}
+												<i class="small material-icons green-text">star</i>
+												<i class="small material-icons green-text">star</i>
+												<i class="small material-icons green-text">star</i>
+												<i class="small material-icons green-text">star_border</i>
+												<i class="small material-icons green-text">star_border</i>
+											{% elseif avg >= 4 and avg <5 %}
+												<i class="small material-icons green-text">star</i>
+												<i class="small material-icons green-text">star</i>
+												<i class="small material-icons green-text">star</i>
+												<i class="small material-icons green-text">star</i>
+												<i class="small material-icons green-text">star_border</i>
+											{% elseif avg >= 5 %}
+												<i class="small material-icons green-text">star</i>
+												<i class="small material-icons green-text">star</i>
+												<i class="small material-icons green-text">star</i>
+												<i class="small material-icons green-text">star</i>
+												<i class="small material-icons green-text">star</i>
+											{% else %}
+												<i class="small material-icons green-text">star_border</i>
+												<i class="small material-icons green-text">star_border</i>
+												<i class="small material-icons green-text">star_border</i>
+												<i class="small material-icons green-text">star_border</i>
+												<i class="small material-icons green-text">star_border</i>
+											{% endif %}
+
+											<br>
+											{% if is_granted('ROLE_USER')%}
+											<a href="{{ path('add_favoris_route', { id: obj.categorie.id, idUtilisateur: app.user.id, idProduit :obj.id }) }}"><i class="small material-icons indigo-text">favorite_border</i></a>
+											<a href="{{ path('panier_add', {id :obj.id })}}"><i class="small material-icons indigo-text">add_shopping_cart</i></a>
+											{% endif %}
+										</p>
+									</div>
+								</div>
+							</a>
+						{% endfor %}
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+{% endblock %}

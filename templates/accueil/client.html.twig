@@ -1,0 +1,98 @@
+{% extends 'base.html.twig' %}
+{% block body %}
+<h1 class="center-align"> Hello {{app.user.email}}</h1>
+  <div class="row">
+    <div class="col s12">
+      <ul class="tabs" id="tabs">
+        <li class="tab col s6"><a class="active" href="#test1">Informations client</a></li>
+        <li class="tab col s6"><a href="#test2">Historique des commandes</a></li>
+       
+      </ul>
+    </div>
+    <div id="test1" class="col s12">
+    <br>
+    <div class="row">
+    <form class="col s12">
+      <div class="row">
+        <div class="input-field col s12">
+          <input disabled value= "{{app.user.email}}" id="email" type="text" class="validate">
+          <label for="first_name">Email</label>
+        </div>
+      </div>
+      <div class="row">
+        <div class="input-field col s12">
+          <input disabled value="{{app.user.AdresseLibelle}}" id="Adresse" type="text" class="validate">
+          <label for="Adresse">Adresse</label>
+        </div>
+      </div>
+       <div class="row">
+        <div class="input-field col s12">
+          <input disabled value="{{app.user.AdresseCp}}" id="cp" type="text" class="validate">
+          <label for="cp">Code postal</label>
+        </div>
+      </div>
+      <div class="row">
+        <div class="input-field col s12">
+          <input disabled value="{{app.user.Ville}}" id="ville" type="text" class="validate">
+          <label for="ville">Ville</label>
+        </div>
+      </div>
+      <div class="row">
+        <div class="input-field col s12">
+          <input disabled value="{{app.user.Pays}}" id="pays" type="text" class="validate">
+          <label for="pays">Ville</label>
+        </div>
+      </div>
+      </div>
+      <div class="row">
+        <a class="waves-effect waves-light btn">Modifier</a>
+      </div>
+      </div>
+    </form>
+  </div>
+    
+    
+    
+    
+    </div>
+    <div id="test2" class="col s12">
+          <table class="striped">
+        <thead>
+          <tr>
+              <th>Date : </th>
+              <th>Total :</th>
+              <th>Statut : </th>
+              <th>Adresse expédiée : </th>
+              <th>Code postal : </th>
+              <th>Ville :</th>
+              <th>Pays : </th>
+              <th>Facture : </th>
+          </tr>
+        </thead>
+
+        <tbody>
+        {% for obj in commandes %}
+          <tr>
+            
+            <td>{{obj.date|date('Y-m-d')}}</td>
+            <td>{{obj.montant}}</td>
+            <td>{{obj.statut}}</td>
+            <td>{{obj.adresseLibelle}}</td>
+            <td>{{obj.adresseCp}}</td>
+            <td>{{obj.Ville}}</td>
+            <td>{{obj.Pays}}</td>
+            <td><a class="waves-effect waves-light btn">Facture</a>
+</td>
+          </tr>
+           {% endfor %}
+        </tbody>
+      </table>
+    
+    
+    
+    
+    
+    </div>
+
+  </div>
+{% endblock %}
